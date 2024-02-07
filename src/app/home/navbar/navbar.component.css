@@ -1,0 +1,108 @@
+.navbar {
+  box-shadow: 0 4px 12px 0 rgba(0, 0, 0, 0.05);
+  background-color: #fff;
+  padding: 10px 17px;
+}
+
+.navbar .container-fluid .navbar-brand img {
+  width: 50px;
+  height: 50px;
+}
+
+.navbar .container-fluid .navbar-nav .nav-item .nav-link {
+  font-size: 14px;
+  font-weight: 650;
+  margin: 0 5px;
+  text-transform: uppercase;
+}
+
+.navbar .container-fluid .navbar-nav .nav-item .nav-link:hover {
+  border-bottom: solid 2px;
+  border-bottom-color: #ff3f6c;
+}
+
+.navbar .container-fluid .navbar-collapse {
+  justify-content: space-between;
+}
+
+.navbar .container-fluid .navbar-collapse .navbar-nav .nav-item .nav-link sup {
+  font-size: 10px;
+  font-weight: bold;
+  color: #ff3f6c;
+  padding-left: 4px;
+}
+
+.navbar .container-fluid .navbar-collapse .search .row {
+  height: 35px;
+  width: 350px;
+  position: relative;
+  outline: none;
+}
+
+.navbar .container-fluid .navbar-collapse .search .row input {
+  height: 100%;
+  width: 100%;
+  outline: none;
+  border-radius: 5px;
+  border: #F5F5F6;
+  background-color: #F5F5F6;
+  padding-left: 42px;
+}
+
+.navbar .container-fluid .navbar-collapse .search .row input[type=search]::-moz-placeholder {
+  font-size: 13px;
+  font-weight: 550;
+  color: rgb(95, 91, 91);
+}
+
+.navbar .container-fluid .navbar-collapse .search .row input[type=search]::placeholder {
+  font-size: 13px;
+  font-weight: 550;
+  color: rgb(95, 91, 91);
+}
+
+.navbar .container-fluid .navbar-collapse .search .row .nav-icons {
+  position: absolute;
+  width: 47px;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 13px;
+  color: rgb(95, 91, 91);
+  pointer-events: none;
+}
+
+.navbar .container-fluid .navbar-collapse .profile-nav-icons .nav-item .nav-link .icons-title {
+  text-transform: capitalize;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+@media (min-width: 992px) and (max-width: 1180px) {
+  .navbar .container-fluid .navbar-brand img {
+    width: 40px;
+    height: 40px;
+  }
+  .navbar .container-fluid .navbar-nav .nav-item .nav-link {
+    font-size: 12px;
+  }
+  .navbar .container-fluid .navbar-collapse .navbar-nav .nav-item .nav-link sup {
+    font-size: 8px;
+  }
+  .navbar .container-fluid .navbar-collapse .search .row {
+    width: 250px;
+  }
+  .navbar .container-fluid .navbar-collapse .search .row input[type=search]::-moz-placeholder {
+    font-size: 11px;
+  }
+  .navbar .container-fluid .navbar-collapse .search .row input[type=search]::placeholder {
+    font-size: 11px;
+  }
+  .navbar .container-fluid .navbar-collapse .search .row .nav-icons {
+    font-size: 10px;
+  }
+  .navbar .container-fluid .navbar-collapse .profile-nav-icons .nav-item .nav-link .icons-title {
+    font-size: 10px;
+  }
+}/*# sourceMappingURL=navbar.component.css.map */

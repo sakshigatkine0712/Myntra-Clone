@@ -1,0 +1,33 @@
+//common style created with the help of mixin used in multiple components
+
+
+// mixin for login button in login form created beacause button is used for multiple times
+@mixin login-button // used login component
+{
+    cursor: pointer;
+    background-color: #ff3f6c;
+    text-align: center;
+    padding: 12px;
+    color: #fff;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 16px;
+    width: 100%;
+    border: none;
+    box-sizing: none;
+}
+
+@mixin login-p 
+{
+    font-size: 12px;
+    color:#94969f ;
+    margin-top: 22px;
+}
+
+@mixin login-p-a 
+{
+    font-size: 10px;
+    color: #FF3C6F;
+    font-weight: bold;
+    text-decoration: none;
+}

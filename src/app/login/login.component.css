@@ -1,0 +1,189 @@
+html, body {
+  display: grid;
+  height: 100%;
+  width: 100%;
+  place-items: center;
+  background-color: lightpink;
+}
+
+.wrap {
+  width: 100vw;
+  height: 460px;
+  padding: 0px 0px 30px 0px;
+  background: white;
+  border-radius: 5px;
+}
+
+.wrap img {
+  height: 128px;
+  width: 100%;
+  top: 0;
+}
+
+.wrap h5 {
+  font-weight: 700;
+  margin-bottom: 24px;
+}
+
+.wrap h5 .small-span {
+  font-size: 16px;
+  font-weight: 400;
+  color: #535766;
+}
+
+.wrap .login-form {
+  padding: 40px 30px 50px 30px;
+}
+
+.wrap .login-form .row {
+  height: 45px;
+  margin-bottom: 15px;
+  background: red;
+  position: relative;
+}
+
+.login-form .row input {
+  height: 100%;
+  width: 100%;
+  outline: none;
+  padding-left: 60px;
+}
+
+.login-form .row input[type=tel]::-moz-placeholder {
+  font-size: 13px;
+  color: #94969f;
+}
+
+.login-form .row input[type=tel]::placeholder {
+  font-size: 13px;
+  color: #94969f;
+}
+
+.wrap .login-form .row .number-span {
+  position: absolute;
+  width: 47px;
+  padding-left: 28px;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 15px;
+  color: #94969f;
+  pointer-events: none;
+}
+
+.wrap .login-form .row .number-span .span-line {
+  padding: 0px 10px;
+  position: relative;
+  bottom: 1px;
+}
+
+.wrap .login-form .row p {
+  font-size: 12px;
+  color: #94969f;
+  margin-top: 22px;
+}
+
+.wrap .login-form .row p a {
+  font-size: 10px;
+  color: #FF3C6F;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.wrap .login-form .row button {
+  cursor: pointer;
+  background-color: #ff3f6c;
+  text-align: center;
+  padding: 12px;
+  color: #fff;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 16px;
+  width: 100%;
+  border: none;
+  box-sizing: none;
+}
+
+.otp-container {
+  width: 100%;
+  padding: 30px 50px;
+  display: none;
+}
+
+.otp-container .otp-img {
+  width: auto !important;
+  height: auto;
+  display: block;
+}
+
+.otp-container .otp-img img {
+  width: 40%;
+  height: 40%;
+}
+
+.otp-container h3 {
+  font-weight: 700;
+  font-size: 16px;
+  padding: 0;
+  font-size: 20px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.otp-container h4 {
+  font-weight: 400;
+  font-size: 12px;
+  opacity: 0.7;
+  padding: 0;
+}
+
+.otp-input {
+  margin-top: 40px;
+}
+
+.otp-input input {
+  padding: 9px 0;
+  border: 1px solid #d4d5d9;
+  font-size: 14px;
+  text-align: center;
+  margin: 0 16px 0 0;
+  width: 30px;
+  border-radius: 2px;
+}
+
+.otp-container .resend-btn {
+  padding: 0;
+  border: none;
+  color: #ff3f6c;
+  font-size: 12px;
+  font-weight: 700;
+  background-color: #fff;
+  margin-top: 30px;
+  cursor: pointer;
+}
+
+.otp-container .resendTime span {
+  font-size: 12px;
+  color: #94969f;
+  margin-top: 22px;
+}
+
+.wrap .log-pass p, .get-help p {
+  font-size: 12px;
+  color: #94969f;
+  margin-top: 22px;
+}
+
+.wrap .log-pass p a, .get-help p a {
+  font-size: 10px;
+  color: #FF3C6F;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+@media (min-width: 384px) {
+  .wrap {
+    width: 384px;
+  }
+}/*# sourceMappingURL=login.component.css.map */
