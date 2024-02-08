@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 
+
 @Component({
   selector: 'app-main',
   standalone: true,
@@ -9,4 +10,5 @@ import { Component } from '@angular/core';
 })
 export class MainComponent {
 
+  
 }
