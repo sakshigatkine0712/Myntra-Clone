@@ -43,6 +43,15 @@ width: 50%;
     height: auto;
     width: 100%;
 }
+.last-image
+{
+    padding: 0 10px;
+}
+.last-image a img
+{   
+    width: 100%;  
+
+}
 
 
 // Media queries
@@ -52,4 +61,17 @@ width: 50%;
     {
         margin-top: 70px;
     }
+}
+
+@media (max-width: 650px)
+{
+    .container-cardsimages
+    {
+        padding: 0 10px;
+    }
+
+    .last-image
+{
+    padding: 0;
+}
 }

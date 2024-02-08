@@ -1,17 +1,24 @@
 <!-- bootstrap navbar -->
 <nav class="navbar navbar-expand-lg">
     <div class="container-fluid">
-          <a class="navbar-brand" aria-current="page" href="">
+          <a class="navbar-brand"  href="">
             <img
             src="https://gumlet.assettype.com/afaqs/2021-01/15f5f827-8e29-4520-af8d-a0f353b8da17/images.png?auto=format,compress&w=1200" 
             alt="NavLogo"/> </a>
-      <button class="navbar-toggler" type="button"  data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <button class="navbar-toggler" type="button"  data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" >
+        <!--The attributes data-bs-toggle, data-bs-target, aria-controls, aria-expanded, and 
+          aria-label that you see in the button element (<button>) are part of Bootstrap's 
+            navbar functionality for toggling the collapse and expand behavior of the 
+            navigation menu on smaller screens.-->
         <span class="navbar-toggler-icon"></span>
       </button>
      
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        
-        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <!-- The collapse and navbar-collapse classes are used to style the 
+          collapsible content, and the id attribute is used by JavaScript to 
+          identify the collapsible element. -->
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0"> 
+          <!-- me-auto = margin-right property to auto.| mb-2 = margin-bottom 2= 8px/ 0.5rem -->
           <li class="nav-item">
             <a class="nav-link " href="#">Men</a>
           </li>
@@ -34,7 +41,7 @@
 
         <form class="d-flex search me-auto"  role="search">
           <div class="row"> 
-            <fa-icon class="nav-icons" [icon]="searchicon"></fa-icon>
+            <fa-icon class="nav-icons" [icon]="searchicon"></fa-icon><!--font awesome icon-->
             <input class="" type="search" placeholder="Search for products, brands and more" aria-label="Search">
           </div>
         </form>
