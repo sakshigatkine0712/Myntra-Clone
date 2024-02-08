@@ -2,6 +2,10 @@
   box-shadow: 0 4px 12px 0 rgba(0, 0, 0, 0.05);
   background-color: #fff;
   padding: 10px 17px;
+  position: fixed;
+  width: 100vw;
+  top: 0;
+  z-index: 1000;
 }
 
 .navbar .container-fluid .navbar-brand img {
@@ -104,5 +108,43 @@
   }
   .navbar .container-fluid .navbar-collapse .profile-nav-icons .nav-item .nav-link .icons-title {
     font-size: 10px;
+  }
+}
+@media (max-width: 991px) {
+  .navbar {
+    padding: 5px 10px;
+  }
+  .navbar .container-fluid .navbar-brand img {
+    width: 35px;
+    height: 35px;
+  }
+  .navbar-collapse {
+    padding-top: 10px;
+  }
+  .mob-nav {
+    display: block;
+  }
+  .navbar .container-fluid .navbar-nav .nav-item .nav-link {
+    font-size: 12px;
+  }
+  .navbar .container-fluid .navbar-collapse .navbar-nav .nav-item .nav-link sup {
+    font-size: 8px;
+  }
+  .navbar-toggler {
+    padding: 0.25rem 0.5rem;
+    font-size: 0.75rem;
+    line-height: 1.25;
+  }
+  .navbar .container-fluid .navbar-nav .nav-item .nav-link {
+    font-size: 10px;
+  }
+  .navbar .container-fluid .navbar-collapse .search .row {
+    display: none;
+  }
+  .navbar .container-fluid .navbar-nav .nav-item .nav-link:hover {
+    border-bottom: none;
+  }
+  .profile-nav-icons {
+    display: none;
   }
 }/*# sourceMappingURL=navbar.component.css.map */

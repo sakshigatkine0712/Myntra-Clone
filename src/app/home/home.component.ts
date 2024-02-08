@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
-import { NavbarComponent } from './navbar/navbar.component';
-import { MainComponent } from './main/main.component';
-import { FooterComponent } from './footer/footer.component';
+import { NavbarComponent } from '../navbar/navbar.component';
+import { MainComponent } from '../main/main.component';
+import { FooterComponent } from '../footer/footer.component';
 @Component({
     selector: 'app-home',
     standalone: true,
