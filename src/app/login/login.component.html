@@ -3,13 +3,14 @@
     <body>
         <div class="wrap ">
              <!-- Login Page -->
+        <div class="login">
             <img src="https://assets.myntassets.com/f_webp,dpr_1.5,q_60,w_400,c_limit,fl_progressive/assets/images/2023/10/29/9610da61-a1a4-4215-b1fa-f612242d10e61698602536819-Flat_200--1-.jpg" alt="login image">
                     
                     <div class="login-form">
                     <h5>Login <span class="small-span">or</span> Signup</h5>
                     <form> 
                         <div class="row">
-                            <input id="" type="tel" class="mobileNumberInput" placeholder="Mobile Number" maxlength="10" value=""/>
+                            <input id="" type="tel" class="mobileNumberInput" placeholder="Mobile Number" maxlength="10" value="" required/>
                             <span class="number-span">+91
                                 <span class="span-line">|</span>
                                   </span>
@@ -19,9 +20,10 @@
                             </div>            
                     </form>
                     </div>
+                </div>
+                
                 <!-- OTP Page -->
         
-           
                 <div id="otp-container" class="otp-container">
                     <div class="otp-img">
                         <img src="https://constant.myntassets.com/pwa/assets/img/3a438cb4-c9bf-4316-b60c-c63e40a1a96d1548071106233-mobile-verification.jpg" alt="otp-image"/>
@@ -30,16 +32,16 @@
                         <h3>Verify with OTP</h3>
                         <h4>Sent to 7020943084</h4>
                         <div class="otp-input">
-                            <input name="otp0" type="tel" maxlength="1"  autocomplete="off" value="">
-                            <input name="otp1" type="tel" maxlength="1"  autocomplete="off" value="">
-                            <input name="otp2" type="tel" maxlength="1"  autocomplete="off" value="">
-                            <input name="otp3" type="tel" maxlength="1"  autocomplete="off" value="">
+                            <input name="otp" type="tel" maxlength="4"  autocomplete="off" value="" required/>      
+                        </div>
+                        <div class="verify">
+                            <button type="submit" >Verify</button>
                         </div>
                         <div>
-                            <button class="resend-btn">RESEND OTP</button>
+                           <a href="/"> <button class="resend-btn"  style="display: none;">RESEND OTP</button></a>
                         </div>
                         <!-- otp-timer -->
-                        <div class="resendTime" style="display: none;"> 
+                        <div class="resendTime"> 
                             <span> Resend OTP in: </span>00:00
                         </div>
                         

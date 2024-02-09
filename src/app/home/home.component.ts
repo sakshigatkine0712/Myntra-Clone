@@ -8,6 +8,7 @@ import { FooterComponent } from '../footer/footer.component';
     templateUrl: './home.component.html',
     styleUrl: './home.component.scss',
     imports: [[NavbarComponent],[MainComponent],[FooterComponent]]
+   
 })
 export class HomeComponent {
 

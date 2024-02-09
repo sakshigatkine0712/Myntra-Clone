@@ -12,10 +12,13 @@ html, body
 .wrap
 {
     width: 100vw;
-    height: 460px;
+    height: 480px;
     padding: 0px 0px 30px 0px;
   background: white;
   border-radius: 5px; 
+}
+.login{
+display: none;
 }
 
 .wrap  img 
@@ -100,7 +103,7 @@ color: #535766;
     {
         width: 100%;
         padding: 30px 50px;
-        display: none;
+        // display: none;
     }
     .otp-container .otp-img
     {
@@ -135,7 +138,7 @@ color: #535766;
 }
     .otp-input
     {
-        margin-top: 40px;
+        margin-top: 20px;
     }
 
     .otp-input input
@@ -145,7 +148,7 @@ color: #535766;
         font-size: 14px;
         text-align: center;
         margin: 0 16px 0 0;
-        width: 30px;
+        width: 100%;
         border-radius: 2px;
     }
     
@@ -161,8 +164,20 @@ color: #535766;
     cursor: pointer
     }
 
+    .otp-container .verify button
+    { 
+        margin-top: 15px;
+        @include login-button;
+    }
+
+    .otp-container .resendTime 
+    {
+        margin-top: 20px;
+    }
+
     .otp-container .resendTime span
     {
+       
         @include login-p;
     }
 
