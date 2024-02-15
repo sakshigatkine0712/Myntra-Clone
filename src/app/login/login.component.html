@@ -1,67 +1,96 @@
-
 <section class="log">
-    <div>
-        <div class="wrap ">
-             <!-- Login Page -->
-        <div class="login" *ngIf="!isLoggin">
-            <img src="https://assets.myntassets.com/f_webp,dpr_1.5,q_60,w_400,c_limit,fl_progressive/assets/images/2023/10/29/9610da61-a1a4-4215-b1fa-f612242d10e61698602536819-Flat_200--1-.jpg" alt="login image">
-                    
-                    <div class="login-form">
-                    <h5>Login <span class="small-span">or</span> Signup</h5>
-                    <form [formGroup]="loginform" (ngSubmit)="onSubmit()"> <!--ngSubmit for continue btn (for submitting the form in reactive form we use ngSubmit directive)-->
-                        <div class="row">
-                            <input id="" type="tel" class="mobileNumberInput" placeholder="Mobile Number" maxlength="10" value="" 
-                         formControlName="contactno" required=""/>
-                            <span class="number-span">+91
-                                <span class="span-line">|</span>
-                                  </span>
-                                <p>By continuing, I agree to the <a href="/">Terms of Use</a> & <a href="/">Privacy Policy</a></p>
-                                <button type="submit">Continue</button>
-                                <p>Have trouble logging in? <a href="/">Get Help</a></p>
-                            </div>            
-                    </form>
-                    </div>
-                </div>
-                
-                <!-- OTP Page -->
-        
-                <div id="otp-container" class="otp-container" *ngIf="isLoggin">
-                    <div class="otp-img">
-                        <img src="https://constant.myntassets.com/pwa/assets/img/3a438cb4-c9bf-4316-b60c-c63e40a1a96d1548071106233-mobile-verification.jpg" alt="otp-image"/>
-                    </div>
-                    <div>
-                        <h3>Verify with OTP</h3>
-                        <h4>Sent to {{mobilenumber}}</h4>
-                        <form class="otp-input">
-                            <input name="otp" type="tel" maxlength="4"  autocomplete="off" value="" required/>      
-                            <div class="verify">
-                                <button type="submit" >Verify</button>
-                            </div>
-                        </form>
-                        
-                        <!-- otp-timer -->
-                       <div class="otp-timer">
-                           <p class="resendTime"  *ngIf="timeLeft > 0"> 
-                                Resend OTP in: 
-                                <span>{{timeLeft}}</span>
-                            </p>
-                        
-                        <a href="/" id="resend-btn" (click)="resend()" *ngIf="timeLeft === 0">
-                           <p class="resend-btn" >RESEND OTP</p>
-                        </a>
-                       </div>
-                        
-                    </div>
-                    <div class="log-pass">
-                        <p>Log in using <a href="/">Password</a></p>  
-                    </div>
-                    <div class="get-help">
-                        <p>Have trouble logging in? <a href="/">Get Help</a></p>  
-                    </div>
-                </div>
-        
-        </div>
-        
-    </div>
-</section>
+  <div>
+    <div class="wrap">
+      <!-- Login Page -->
+      <div class="login" *ngIf="!isLoggin">
+        <img
+          src="https://assets.myntassets.com/f_webp,dpr_1.5,q_60,w_400,c_limit,fl_progressive/assets/images/2023/10/29/9610da61-a1a4-4215-b1fa-f612242d10e61698602536819-Flat_200--1-.jpg"
+          alt="login image"
+        />
 
+        <div class="login-form">
+          <h5>Login <span class="small-span">or</span> Signup</h5>
+          <form [formGroup]="loginform" (ngSubmit)="onSubmit()">
+            <!--ngSubmit for continue btn (for submitting the form in reactive form we use ngSubmit directive)-->
+            <div class="row">
+              <input
+                id=""
+                type="tel"
+                name="mobile"
+                class="mobileNumberInput"
+                placeholder="Mobile Number"
+                maxlength="10"
+                value=""
+                formControlName="contactNo"
+                required
+              />
+              <span class="number-span"
+                >+91
+                <span class="span-line">|</span>
+              </span>
+              <p>
+                By continuing, I agree to the <a href="/">Terms of Use</a> &
+                <a href="/">Privacy Policy</a>
+              </p>
+              <button type="submit">Continue</button>
+              <p>Have trouble logging in? <a href="/">Get Help</a></p>
+            </div>
+             <!-- error div  -->
+           
+          </form> 
+          </div>
+      </div>
+
+      <!-- OTP Page -->
+
+      <div id="otp-container" class="otp-container" *ngIf="isLoggin">
+        <div class="otp-img">
+          <img
+            src="https://constant.myntassets.com/pwa/assets/img/3a438cb4-c9bf-4316-b60c-c63e40a1a96d1548071106233-mobile-verification.jpg"
+            alt="otp-image"
+          />
+        </div>
+        <div>
+          <h3>Verify with OTP</h3>
+          <h4>Sent to {{ mobilenumber }}</h4>
+          <form class="otp-input">
+            <input
+              name="otp"
+              type="tel"
+              maxlength="4"
+              autocomplete="off"
+              value=""
+              required
+            />
+            <div class="verify">
+              <button type="submit">Verify</button>
+            </div>
+          </form>
+
+          <!-- otp-timer -->
+          <div class="otp-timer">
+            <p class="resendTime" *ngIf="timeLeft > 0">
+              Resend OTP in:
+              <span>{{ timeLeft }}</span>
+            </p>
+
+            <a
+              href="/"
+              id="resend-btn"
+              (click)="resend()"
+              *ngIf="timeLeft === 0"
+            >
+              <p class="resend-btn">RESEND OTP</p>
+            </a>
+          </div>
+        </div>
+        <div class="log-pass">
+          <p>Log in using <a href="/">Password</a></p>
+        </div>
+        <div class="get-help">
+          <p>Have trouble logging in? <a href="/">Get Help</a></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
