@@ -17,10 +17,12 @@ export class LoginComponent implements OnInit{
 
 
   public loginform !: FormGroup;
+  public otpform !: FormGroup;
   public submitted!: false;//form not submitted when we load the pade first time
   mobilenumber: any; // storing the value of mobile input field
+  otpnumber: any;// storing the value of otp input field
   public isLoggin= false;// initially set to false means loginform is display (for which form has to display (login/otp))
-  contactNo: any;
+  // contactNo: any;
   
    // Typescript array
   // array of object (users). Declaring an Array of Objects in Inline Type | for login data beacause we don't have any database.
@@ -51,26 +53,26 @@ export class LoginComponent implements OnInit{
   ]]
   })
 
+  this.otpform = this.formBuilder.group({
+    OTP:['',
+    [
+    Validators.required,
+    Validators.maxLength(4),
+    Validators.minLength(4)
+    ]]
+  })
+
 }
 
 
  
 //-----------------------------------------------------------------------------------
-// Login Continue button code 
-// contactNo: any;
-// loginform= new  FormGroup({
-// contactNo :  new FormControl('')// formControl for mobilenumber input
-// }); // formGroup for form tag
-
-
-
+// Login 
 // Continue button code
-    onSubmit() {
+    
+onSubmit() {
   // ?. (safe navigation operator) checks to ensure the property is not null or undefined before accessing its properties.
   this.mobilenumber = this.loginform.get('contactNo')?.value;
-  console.log('here is the mobileNumber', this.mobilenumber);
-  
-
   //get the value of mobile input field
 
  // Check if the entered mobile number exists in the users array
@@ -88,21 +90,21 @@ else {
   this.loginform.reset();
 
 }
+
 }
 //-------------------------------------------------------------------------------------
   //  Timer Code (Validation Page OTP timer Code)
 
-   timeLeft = 10; //30 sec at initial
+   timeLeft = 30; //30 sec at initial
   // interval: any;
    interval = setInterval(()=> this.countdown(this.timeLeft), 1000); // setting the inetrval for 1 sec timerlooping
 
 // function for resend btn when we click on resend btn it will again start the timer
   resend()
 {
-  this.timeLeft = 10;
+  this.timeLeft = 30;
   this.interval = setInterval(()=> this.countdown(this.timeLeft), 1000);
-  console.log('here the timeLeft', this.timeLeft);
-  
+  this.otpform.reset();
 }
 // //  decrement timer code (function)
  countdown(n:number) {
@@ -114,8 +116,28 @@ else {
 }
 
 //------------------------------------------------------------------------------------
+// OTP Match Code 
+onVerify()
+{
+  this.otpnumber = this.otpform.get('OTP')?.value;
+  //get the value of otp input field
 
-// validations code 
+ // Check if the entered otp exists in the users array
+ const otpfound = this.users.find(user => user.otp == this.otpnumber);
+
+ if (otpfound) {
+  // if otp is found then navigate to the home page
+  alert("Login Successfully!");
+  this.router.navigate(['/home']); //and then redirect to the home.
+  
+} 
+else {
+  // If not found then show the error message
+  alert('Invalid OTP');
+  this.otpform.reset();
+
+}
+}
 
 
 }

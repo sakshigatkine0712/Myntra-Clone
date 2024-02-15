@@ -53,13 +53,14 @@
         <div>
           <h3>Verify with OTP</h3>
           <h4>Sent to {{ mobilenumber }}</h4>
-          <form class="otp-input">
+          <form class="otp-input" [formGroup]="otpform" (ngSubmit)="onVerify()">
             <input
               name="otp"
               type="tel"
               maxlength="4"
               autocomplete="off"
               value=""
+              formControlName="OTP"
               required
             />
             <div class="verify">
@@ -78,8 +79,7 @@
               href="/"
               id="resend-btn"
               (click)="resend()"
-              *ngIf="timeLeft === 0"
-            >
+              *ngIf="timeLeft === 0">
               <p class="resend-btn">RESEND OTP</p>
             </a>
           </div>
