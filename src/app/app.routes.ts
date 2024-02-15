@@ -7,6 +7,6 @@ import { HomeComponent } from '../app/home/home.component';
 export const routes: Routes = [
     { path: '', redirectTo: '/login', pathMatch: 'full' },//Onloading the website login page will be apear
     { path: 'login', component: LoginComponent },
-    // { path: 'home', component: HomeComponent},//inside home we  have nav, main , and footer
+    { path: 'home', component: HomeComponent},//inside home we  have nav, main , and footer
     { path: '**', redirectTo: '/login' } //when none of the path matches
  ];
