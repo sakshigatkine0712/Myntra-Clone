@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {Router } from '@angular/router'
 import { CommonModule } from '@angular/common';
 import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-
+// import { contactErrors } from '../validations/validationfunctions'; 
 @Component({
   selector: 'app-login',
   standalone: true,
@@ -21,9 +21,9 @@ export class LoginComponent implements OnInit{
   mobilenumber: any; // storing the value of mobile input field
   otpnumber: any;// storing the value of otp input field
   public isLoggin= false;// initially set to false means loginform is display (for which form has to display (login/otp))
-  timeLeft = 10; //10 sec at initial
-   interval :any; // variable for timer looping
-
+  timeLeft = 20; //10 sec at initial
+  interval :any; // variable for storing the interval id.If you don't store the interval ID, you won't be able to clear the interval, and the timer will continue running indefinitely.
+  contactNo: any;
   
   
    // Typescript array
@@ -41,6 +41,7 @@ export class LoginComponent implements OnInit{
    { "firstName": 'Rohit', "lastName": "ggn", "mobilenum": 5050505050 , gender: 'Male', otp: 2309  },
    { "firstName": 'Madhura', "lastName": "sdf", "mobilenum": 4545454545 , gender: 'Female', otp: 9456  },
    ];
+ 
 
 //In Angular, constructors are used for dependency injection.
 // system will automatically provide instances of FormBuilder and Router when an instance of the component is created. 
@@ -48,26 +49,29 @@ export class LoginComponent implements OnInit{
 //The FormBuilder is a service provided by Angular that helps you to create instances of FormGroups and FormControls(classes) in reactive forms.  
 constructor(private formBuilder: FormBuilder, private router: Router){}
   
-  //Validations
+
   //ngOnInit() It is commonly used for initializing component properties, fetching data from a service, or performing any setup tasks needed for the component.
   ngOnInit(): void {
-
+//initializing two form groups using the FormBuilder service.
   this.loginform = this.formBuilder.group({
   //FormControl represents a single input field (contactNo is FormControl)
     contactNo:['',
-  [
+  [//array of validators
+    //used Validators(class) to apply validation rules to the input fields
   Validators.required,
   Validators.maxLength(10),
-  Validators.minLength(10)
+  Validators.minLength(10),
+  Validators.pattern('[0-9]{10}')
   ]]
   })
 
   this.otpform = this.formBuilder.group({
-    OTP:['',
+    otpnum:['',//initially set to empty string
     [
     Validators.required,
     Validators.maxLength(4),
-    Validators.minLength(4)
+    Validators.minLength(4),
+    Validators.pattern('[0-9]*')
     ]]
   })
 
@@ -82,7 +86,7 @@ onSubmit() {
  // ?. (safe navigation operator) allows you to safely access properties and methods of an object without causing an error if the object is null or undefined.
   this.mobilenumber = this.loginform.get('contactNo')?.value;
   //get the value of mobile input field
-
+  
  // Check if the entered mobile number exists in the users array
  const userExists = this.users.find(user => user.mobilenum == this.mobilenumber);
 
@@ -94,7 +98,7 @@ onSubmit() {
 } 
 else {
   // If the user does not exist
-  alert('User does not exist');
+  alert('Mobile Number is not Registered, Sign Up First');
   this.loginform.reset();//reset the form
 
 }
@@ -107,7 +111,7 @@ else {
 // function for resend btn when we click on resend btn it will again start the timer
   resend()
 {
-  this.timeLeft = 10;//at initial it take 10 seconds 
+  this.timeLeft = 20;//at initial it take 10 seconds 
   this.startTimer();// calling startTimer (timer decrement function)  
   this.otpform.reset();//clear input fields
 }
@@ -127,7 +131,7 @@ startTimer() {
 // OTP Match Code 
 onVerify()
 {
-  this.otpnumber = this.otpform.get('OTP')?.value;
+  this.otpnumber = this.otpform.get('otpnum')?.value;
   //get the value of otp input field
 
  // Check if the entered otp exists in the users array
@@ -142,10 +146,55 @@ onVerify()
 else {
   // If not found then show the error message
   alert('Invalid OTP');
-  this.otpform.reset();
-
+  this.otpform.reset();  
 }
 }
+//------------------------------------------------------------------------------------
+//Validations error Code
+//Error display function for login contact field
+getErrorMessageContact()
+{
 
+  const contactNoControl = this.loginform.get('contactNo');
+  console.log(contactNoControl);
+  if (contactNoControl?.errors) {
+    if (contactNoControl.errors['required']) {
+      return 'Mobile Number is Required';
+    }
+    if (contactNoControl.errors['minlength']) {
+      return 'Please enter the valid Mobile Number';
+    }
+    if (contactNoControl.errors['maxlength']) {
+      return 'Please enter the valid Mobile Number';
+    }
+    if (contactNoControl.errors['pattern']) {
+      return 'Please enter the valid Mobile Number';
+    }
+  }
+  return;
+}
+
+//Error display function for otp input field
+getErrorMessageOtp()
+{
+  const otpControl = this.otpform.get('otpnum');
+  if (otpControl?.errors) {
+    if (otpControl.errors['required']) {
+      return 'OTP is Required';
+    }
+    if (otpControl.errors['minlength']) {
+      return 'Please enter the valid OTP';
+    }
+    if (otpControl.errors['maxlength']) {
+      return 'Please enter the valid OTP';
+    }
+    if (otpControl.errors['pattern']) {
+      return 'Please enter the valid OTP';
+    }
+  }
+  return;
+}
 
 }
+
+

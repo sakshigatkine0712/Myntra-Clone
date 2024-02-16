@@ -23,17 +23,23 @@
                 maxlength="10"
                 value=""
                 formControlName="contactNo"
-                required
               />
+              <!-- [ngClass]="{
+                  'is-invalid': contactNo.touched && contactNo.invalid
+                }" -->
               <span class="number-span"
                 >+91
-                <span class="span-line">|</span>
+               <span class="span-line">|</span>
               </span>
+              <!-- error message division -->   
+               <div  class="error text-danger" *ngIf="loginform.get('contactNo')?.touched && loginform.get('contactNo')?.invalid">
+                {{getErrorMessageContact()}}
+              </div>
               <p>
                 By continuing, I agree to the <a href="/">Terms of Use</a> &
                 <a href="/">Privacy Policy</a>
               </p>
-              <button type="submit">Continue</button>
+              <button type="submit" [disabled]="loginform.invalid">Continue</button>
               <p>Have trouble logging in? <a href="/">Get Help</a></p>
             </div>
              <!-- error div  -->
@@ -61,11 +67,15 @@
               maxlength="4"
               autocomplete="off"
               value=""
-              formControlName="OTP"
+              formControlName="otpnum"
               required
             />
+            <!-- error message division -->   
+            <div  class="error text-danger" *ngIf="otpform.get('otpnum')?.touched && otpform.get('otpnum')?.invalid">
+              {{getErrorMessageOtp()}}
+            </div>
             <div class="verify">
-              <button type="submit">Verify</button>
+              <button type="submit" [disabled]="otpform.invalid">Verify</button>
             </div>
           </form>
 

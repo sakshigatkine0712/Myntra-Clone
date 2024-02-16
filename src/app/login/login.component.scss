@@ -85,6 +85,11 @@ color: #535766;
     position: relative; 
     bottom: 1px;
 }
+.wrap .login-form .error , .otp-container .error
+{
+    margin-top: 5px;
+    font-size: 11px!important;
+}
 .wrap .login-form .row p{
     @include login-p;
 }
