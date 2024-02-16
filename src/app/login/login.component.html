@@ -2,7 +2,7 @@
   <div>
     <div class="wrap">
       <!-- Login Page -->
-      <div class="login" *ngIf="!isLoggin">
+      <div class="login" *ngIf="!isLoggin"><!--*ngIf is used to hide or show element in app-->
         <img
           src="https://assets.myntassets.com/f_webp,dpr_1.5,q_60,w_400,c_limit,fl_progressive/assets/images/2023/10/29/9610da61-a1a4-4215-b1fa-f612242d10e61698602536819-Flat_200--1-.jpg"
           alt="login image"
@@ -10,7 +10,8 @@
 
         <div class="login-form">
           <h5>Login <span class="small-span">or</span> Signup</h5>
-          <form [formGroup]="loginform" (ngSubmit)="onSubmit()">
+<!--ngSubmit - When a user submits a form, the method specified by ngSubmit is invoked, allowing you to handle form submission programmatically.-->
+         <form [formGroup]="loginform" (ngSubmit)="onSubmit()">
             <!--ngSubmit for continue btn (for submitting the form in reactive form we use ngSubmit directive)-->
             <div class="row">
               <input
@@ -76,7 +77,6 @@
             </p>
 
             <a
-              href="/"
               id="resend-btn"
               (click)="resend()"
               *ngIf="timeLeft === 0">

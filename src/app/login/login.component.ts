@@ -15,14 +15,16 @@ import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } 
 
 export class LoginComponent implements OnInit{
 
-
-  public loginform !: FormGroup;
-  public otpform !: FormGroup;
-  public submitted!: false;//form not submitted when we load the pade first time
+//(!)( "definite assignment assertion" operator) tells TypeScript that these properties will be initialized before they are accessed. 
+ loginform !: FormGroup;// FormGroup allows you to manage the form as a single entity.
+ otpform !: FormGroup;
   mobilenumber: any; // storing the value of mobile input field
   otpnumber: any;// storing the value of otp input field
   public isLoggin= false;// initially set to false means loginform is display (for which form has to display (login/otp))
-  // contactNo: any;
+  timeLeft = 10; //10 sec at initial
+   interval :any; // variable for timer looping
+
+  
   
    // Typescript array
   // array of object (users). Declaring an Array of Objects in Inline Type | for login data beacause we don't have any database.
@@ -40,12 +42,19 @@ export class LoginComponent implements OnInit{
    { "firstName": 'Madhura', "lastName": "sdf", "mobilenum": 4545454545 , gender: 'Female', otp: 9456  },
    ];
 
-
-  constructor(private formBuilder: FormBuilder, private router: Router){}
+//In Angular, constructors are used for dependency injection.
+// system will automatically provide instances of FormBuilder and Router when an instance of the component is created. 
+//declares a private property formBuilder of type FormBuilder. 
+//The FormBuilder is a service provided by Angular that helps you to create instances of FormGroups and FormControls(classes) in reactive forms.  
+constructor(private formBuilder: FormBuilder, private router: Router){}
+  
   //Validations
+  //ngOnInit() It is commonly used for initializing component properties, fetching data from a service, or performing any setup tasks needed for the component.
   ngOnInit(): void {
+
   this.loginform = this.formBuilder.group({
-  contactNo:['',
+  //FormControl represents a single input field (contactNo is FormControl)
+    contactNo:['',
   [
   Validators.required,
   Validators.maxLength(10),
@@ -67,11 +76,10 @@ export class LoginComponent implements OnInit{
 
  
 //-----------------------------------------------------------------------------------
-// Login 
-// Continue button code
+// Login (Continue button code)
     
 onSubmit() {
-  // ?. (safe navigation operator) checks to ensure the property is not null or undefined before accessing its properties.
+ // ?. (safe navigation operator) allows you to safely access properties and methods of an object without causing an error if the object is null or undefined.
   this.mobilenumber = this.loginform.get('contactNo')?.value;
   //get the value of mobile input field
 
@@ -80,14 +88,14 @@ onSubmit() {
 
 
  if (userExists) {
-  // If the user exists, set isLoggin to true to display the OTP page
-  alert("Already Registered Mobile Number");
-  this.isLoggin = true;
+  // alert("Already Registered Mobile Number");
+  this.isLoggin = true; // If the user exists, set isLoggin to true to display the OTP page
+  this.startTimer();//calling the timer decrement function.
 } 
 else {
   // If the user does not exist
   alert('User does not exist');
-  this.loginform.reset();
+  this.loginform.reset();//reset the form
 
 }
 
@@ -95,24 +103,24 @@ else {
 //-------------------------------------------------------------------------------------
   //  Timer Code (Validation Page OTP timer Code)
 
-   timeLeft = 30; //30 sec at initial
-  // interval: any;
-   interval = setInterval(()=> this.countdown(this.timeLeft), 1000); // setting the inetrval for 1 sec timerlooping
 
 // function for resend btn when we click on resend btn it will again start the timer
   resend()
 {
-  this.timeLeft = 30;
-  this.interval = setInterval(()=> this.countdown(this.timeLeft), 1000);
-  this.otpform.reset();
+  this.timeLeft = 10;//at initial it take 10 seconds 
+  this.startTimer();// calling startTimer (timer decrement function)  
+  this.otpform.reset();//clear input fields
 }
-// //  decrement timer code (function)
- countdown(n:number) {
-  this.timeLeft--;
-  if (this.timeLeft === 0) {
-    clearInterval(this.interval);
-    } 
-   
+ //  decrement timer code (function)
+//this function decrement the timeLeft variable(start from 10)one by one at every 1 sec interval  
+startTimer() {
+  this.interval = setInterval(() => {
+    if (this.timeLeft > 0) {
+      this.timeLeft--;
+    } else {
+      clearInterval(this.interval);//if timeLeft is 0 then it will clear the interval
+    }
+  }, 1000);
 }
 
 //------------------------------------------------------------------------------------
