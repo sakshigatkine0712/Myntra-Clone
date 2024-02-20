@@ -147,15 +147,14 @@ onVerify()
  const otpfound = this.users.find(user => user.otp == this.otpnumber);
 
  if (otpfound) {
-  // if otp is found then navigate to the home page
+  // if otp is found 
   alert("Login Successfully!");
-  //Cookies are often used for session management, user authentication, and tracking user behavior.
   localStorage.setItem('isloggedIn', 'true');//It sets a  variable 'isloggedIn, with the value 'true' to indicate successful OTP verification.
   this.router.navigate(['/home']); //and then redirect to the home.  
 } 
 else {
   // If not found then show the error message
-  localStorage.setItem('isloggedIn', 'false');
+  localStorage.setItem('isloggedIn', 'false');// login and logout purposess
   alert('Invalid OTP');
   this.otpform.reset();  
 }
