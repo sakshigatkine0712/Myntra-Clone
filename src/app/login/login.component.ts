@@ -1,8 +1,8 @@
-import { Component, OnInit } from '@angular/core';
-import {Router } from '@angular/router'
+import { Component, OnInit, inject } from '@angular/core';
+import {Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-// import { contactErrors } from '../validations/validationfunctions'; 
+import { CookieService } from 'ngx-cookie-service';
 @Component({
   selector: 'app-login',
   standalone: true,
@@ -21,7 +21,7 @@ export class LoginComponent implements OnInit{
   mobilenumber: any; // storing the value of mobile input field
   otpnumber: any;// storing the value of otp input field
   public isLoggin= false;// initially set to false means loginform is display (for which form has to display (login/otp))
-  timeLeft = 20; //10 sec at initial
+  timeLeft = 30; //10 sec at initial
   interval :any; // variable for storing the interval id.If you don't store the interval ID, you won't be able to clear the interval, and the timer will continue running indefinitely.
   contactNo: any;
   
@@ -42,16 +42,23 @@ export class LoginComponent implements OnInit{
    { "firstName": 'Madhura', "lastName": "sdf", "mobilenum": 4545454545 , gender: 'Female', otp: 9456  },
    ];
  
+ 
 
 //In Angular, constructors are used for dependency injection.
 // system will automatically provide instances of FormBuilder and Router when an instance of the component is created. 
 //declares a private property formBuilder of type FormBuilder. 
 //The FormBuilder is a service provided by Angular that helps you to create instances of FormGroups and FormControls(classes) in reactive forms.  
-constructor(private formBuilder: FormBuilder, private router: Router){}
-  
-
+constructor(private formBuilder: FormBuilder, private router: Router,   private cookie: CookieService){}
+//  private cookie: CookieService for the cookie service (to store the user data)
+ isVerified = localStorage.getItem('isloggedIn');
   //ngOnInit() It is commonly used for initializing component properties, fetching data from a service, or performing any setup tasks needed for the component.
   ngOnInit(): void {
+// authentication refresh on home  code
+
+if(this.isVerified=='true')
+{
+  this.router.navigate(['/home']);
+}
 //initializing two form groups using the FormBuilder service.
   this.loginform = this.formBuilder.group({
   //FormControl represents a single input field (contactNo is FormControl)
@@ -71,7 +78,7 @@ constructor(private formBuilder: FormBuilder, private router: Router){}
     Validators.required,
     Validators.maxLength(4),
     Validators.minLength(4),
-    Validators.pattern('[0-9]*')
+    Validators.pattern('[0-9]*')//takes the number between 0 and 9
     ]]
   })
 
@@ -94,6 +101,8 @@ onSubmit() {
  if (userExists) {
   // alert("Already Registered Mobile Number");
   this.isLoggin = true; // If the user exists, set isLoggin to true to display the OTP page
+  //localStorage can store the state of an application, allowing users to resume their work even after closing and reopening the browser.
+  localStorage.setItem('newUser', JSON.stringify(userExists));//It stores the current user's information in the local storage. The user object is converted to a JSON string using JSON.stringify().
   this.startTimer();//calling the timer decrement function.
 } 
 else {
@@ -111,7 +120,7 @@ else {
 // function for resend btn when we click on resend btn it will again start the timer
   resend()
 {
-  this.timeLeft = 20;//at initial it take 10 seconds 
+  this.timeLeft = 30;//at initial it take 10 seconds 
   this.startTimer();// calling startTimer (timer decrement function)  
   this.otpform.reset();//clear input fields
 }
@@ -140,11 +149,13 @@ onVerify()
  if (otpfound) {
   // if otp is found then navigate to the home page
   alert("Login Successfully!");
-  this.router.navigate(['/home']); //and then redirect to the home.
-  
+  //Cookies are often used for session management, user authentication, and tracking user behavior.
+  localStorage.setItem('isloggedIn', 'true');//It sets a  variable 'isloggedIn, with the value 'true' to indicate successful OTP verification.
+  this.router.navigate(['/home']); //and then redirect to the home.  
 } 
 else {
   // If not found then show the error message
+  localStorage.setItem('isloggedIn', 'false');
   alert('Invalid OTP');
   this.otpform.reset();  
 }

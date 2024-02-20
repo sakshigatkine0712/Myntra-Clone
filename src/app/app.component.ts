@@ -14,4 +14,5 @@ import {ReactiveFormsModule} from '@angular/forms';
 export class AppComponent {
   // Component logic and properties go here
   title = 'Myntra Clone';
+
 }

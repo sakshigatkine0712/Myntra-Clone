@@ -1,10 +1,63 @@
 .main {
-  margin-top: 120px;
+  margin-top: 100px;
   width: 100%;
   position: relative;
 }
 
-.container {
+.wrapper a .wrap-img {
   width: 100%;
-  position: absolute;
+}
+
+.container-head {
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+}
+
+.wrapper .ban-img a img {
+  width: 50%;
+}
+
+.shop-title {
+  width: 100%;
+}
+
+.shop-title a img {
+  width: 100%;
+}
+
+.container-cardsimages {
+  padding: 0 30px;
+}
+
+.col-container {
+  margin: 0;
+  padding: 0;
+}
+
+.col-container a img {
+  height: auto;
+  width: 100%;
+}
+
+.last-image {
+  padding: 0 10px;
+}
+
+.last-image a img {
+  width: 100%;
+}
+
+@media (max-width: 991px) {
+  .main {
+    margin-top: 70px;
+  }
+}
+@media (max-width: 650px) {
+  .container-cardsimages {
+    padding: 0 10px;
+  }
+  .last-image {
+    padding: 0;
+  }
 }/*# sourceMappingURL=main.component.css.map */

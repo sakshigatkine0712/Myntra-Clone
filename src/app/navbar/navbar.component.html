@@ -48,7 +48,7 @@
 
         <ul class="navbar-nav  mb-2  mb-lg-0 profile-nav-icons">
           <li class="nav-item">
-            <a class="nav-link" href="/">
+            <a class="nav-link" href="#">
               <span class="ms-2"><fa-icon  [icon]="user"></fa-icon></span><br>
               <span class="icons-title">Profile</span>
             </a>
@@ -64,6 +64,12 @@
             <a class="nav-link" href="#">
               <span class="ms-1"><fa-icon [icon]="cart"></fa-icon></span><br>
               <span class="icons-title">Bag</span>
+            </a>
+          </li>
+          <li class="nav-item"  (click)="logoutfn()">
+            <a class="nav-link" >
+              <span class="ms-3"><fa-icon [icon]="logout"></fa-icon></span><br>
+              <span class="icons-title">Logout</span>
             </a>
           </li>
         </ul>

@@ -181,12 +181,13 @@ color: #535766;
     .otp-container .resendTime 
     {
         margin-top: 20px;
+        @include login-p;
     }
 
     .otp-container .resendTime span
     {
-       
-        @include login-p;
+       color: black;
+       font-weight: 600;
     }
 
     .wrap .log-pass p , .get-help p{
